@@ -7,10 +7,8 @@ using TMPro;
 public class StartNewGame : MonoBehaviour
 {
     [SerializeField] TMP_InputField managerNameInput;
-    [SerializeField] TMP_InputField managerCountryInput;
-    [SerializeField] TMP_Text testNameDisplay;
+    [SerializeField] TMP_Text managerNameDisplay;
     public string managerName;
-    public string managerCountry;
 
     // Start is called before the first frame update
     void Start()
@@ -22,13 +20,12 @@ public class StartNewGame : MonoBehaviour
     void Update()
     {
         GetManagerData();
-        testNameDisplay.text = PlayerPrefs.GetString("managerName");
+        managerNameDisplay.text = "Start " + PlayerPrefs.GetString("managerName") + "'s career";
     }
 
     void GetManagerData()
     {
         managerName = managerNameInput.text;
-        managerCountry = managerCountryInput.text;
         //Save it for next session
         PlayerPrefs.SetString("managerName", managerName);
     }
